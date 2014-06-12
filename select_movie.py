@@ -42,7 +42,7 @@ def main():
                 "Found video files: " +
                 bcolors.OKGREEN + "{2}" + bcolors.ENDC + "\n"
                 "Movie for tonight is: " +
-                bcolors.WARNING + "{3}" + bcolors.ENDC + "\n"
+                bcolors.WARNING + "{3}" + bcolors.ENDC
                 ).format(len(get_list_of_video_extensions()),
                          directories[0],
                          len(get_filelist_from_dirs(directories[0])),
@@ -61,7 +61,9 @@ def process_questions():
     if sys.argv[1] in ("-h", "--help"):
         s = ("{0:-^89}\n"
              "Example usage:\n"
-             "$ {2} directory1 [directory2 [ ... directoryN ]]\n"
+             "\t$ {2} /my/example/directory\n\n"
+             "Practical examples:\n"
+             "\t$ {2} ~/Video\n"
              "{1:-<89}".format(" Help ", "", __programName__))
         print(s)
         sys.exit()
@@ -75,25 +77,24 @@ def process_questions():
         sys.exit()
 
 
-def get_filelist_from_dirs(directories):
-    """Get a list of file in directories.
+def get_filelist_from_dirs(directory):
+    """Get a list of all files in directory.
 
     Arguments:
     directories -- is a array of paths of searching directories
     """
     list_of_files = []
-    for directory in directories:
-        for root, dirs, files in os.walk(directory):
-            # print path to all filenames.
-            for file in files:
-                list_of_files.append(os.path.join(root, file))
+    for root, dirs, files in os.walk(directory):
+        # print path to all filenames.
+        for file in files:
+            list_of_files.append(os.path.join(root, file))
 
-            # Advanced usage:
-            # editing the 'dirnames' list will stop os.walk() from
-            # recursing into there.
-            if '.git' in root:
-                # don't go into any .git directories.
-                dirs.remove('.git')
+        # Advanced usage:
+        # editing the 'dirnames' list will stop os.walk() from
+        # recursing into there.
+        if '.git' in root:
+            # don't go into any .git directories.
+            dirs.remove('.git')
     return list_of_files
 
 
@@ -121,13 +122,6 @@ def get_list_of_video_extensions():
     ins.close()
     return ext_list
 
-def multiple(a, b):
-    pass
-
-
 
 # Run the program
-#main()
-
-mytuple = ['~/Pulpit', '~/Wideo/']
-print(get_filelist_from_dirs(mytuple))
+main()
