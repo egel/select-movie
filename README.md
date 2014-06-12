@@ -10,7 +10,7 @@ git clone git@github.com:egel/select-movie.git
 
 other way of install:
 ```
-wget https://raw.githubusercontent.com/egel/cvs2html/master/cvs2html.py && chmod +x cvs2html.py
+wget https://raw.githubusercontent.com/egel/select-movie/master/select_movie.py && chmod +x select_movie.py
 ```
 
 
@@ -18,11 +18,6 @@ wget https://raw.githubusercontent.com/egel/cvs2html/master/cvs2html.py && chmod
 Print the result on screen:
 ```
 ./select-movie.py /my/directory
-```
-
-or
-```
-./select-movie.py /my/directory /other/directory
 ```
 
 Help:
@@ -43,7 +38,7 @@ Version:
 
 ### TODO List
 
-  -
+  - Add muliple directories support
 
 
 ## License
