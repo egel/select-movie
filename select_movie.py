@@ -117,7 +117,7 @@ def main():
 
 
 def process_questions():
-    if sys.argv[1] in ("-h", "--help"):
+    if sys.argv[1] in ("-h", "--h", "--help"):
         s = ("{0:-^89}\n"
              "Example usage:\n"
              "\t$ {2} /my/example/directory\n\n"
@@ -126,7 +126,7 @@ def process_questions():
              "{1:-<89}".format(" Help ", "", __programName__))
         print(s)
         sys.exit()
-    elif sys.argv[1] in ("-V", "--version"):
+    elif sys.argv[1] in ("-V","--V", "--version"):
         s = ("{0}  v{1}\n"
              "License GPLv3+: GNU GPL version 3 or later "
              "http://gnu.org/licenses/gpl.html\n"
@@ -161,7 +161,7 @@ def print_all_files(my_list, show_line_numbers=True):
 
     Keywords:
     my_list -- List of items
-    show_line_numbers -- (Defaul1t: True) adding at the start of line
+    show_line_numbers -- (Default: True) adding at the start of line
                          a current index number.
     """
     for index, file in enumerate(my_list):
@@ -200,4 +200,4 @@ def get_list_of_video_extensions():
 # Run the program
 start_time = time.time()
 main()
-print("Total time exec:", time.time() - start_time, "seconds")
+print("\nThe program total execution time:", time.time() - start_time, "seconds")
