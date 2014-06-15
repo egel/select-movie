@@ -92,7 +92,6 @@ def main():
             directories = []
             for path in sys.argv[1:]:
                 directories.append(path)
-                #print_all_files(get_fileslist_from_dirs(filename))
 
             s = (
                 "Known video extensions: " +
@@ -126,7 +125,7 @@ def process_questions():
              "{1:-<89}".format(" Help ", "", __programName__))
         print(s)
         sys.exit()
-    elif sys.argv[1] in ("-V","--V", "--version"):
+    elif sys.argv[1] in ("-V", "--V", "--version"):
         s = ("{0}  v{1}\n"
              "License GPLv3+: GNU GPL version 3 or later "
              "http://gnu.org/licenses/gpl.html\n"
@@ -200,4 +199,5 @@ def get_list_of_video_extensions():
 # Run the program
 start_time = time.time()
 main()
-print("\nThe program total execution time:", time.time() - start_time, "seconds")
+print("\nThe program total execution time:",
+      time.time() - start_time, "seconds")
