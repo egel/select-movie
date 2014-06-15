@@ -7,7 +7,6 @@ import random
 import time
 
 
-
 # Global variables
 __version__ = "1.0.0"
 __programName__ = os.path.basename(__file__)
@@ -93,7 +92,7 @@ def main():
             directories = []
             for path in sys.argv[1:]:
                 directories.append(path)
-                #print_all_files(get_filelist_from_dirs(filename))
+                #print_all_files(get_fileslist_from_dirs(filename))
 
             s = (
                 "Known video extensions: " +
@@ -106,7 +105,7 @@ def main():
                 bcolors.WARNING + "{3}" + bcolors.ENDC
                 ).format(len(video_extensions),
                          directories[0],
-                         len(get_filelist_from_dirs(directories[0])),
+                         len(get_fileslist_from_dirs(directories[0])),
                          get_random_movie(directories[0]))
             print(s)
         except ValueError as err:
@@ -115,7 +114,6 @@ def main():
         s = ("Nothing happen.\n"
              "Use '{0} --help' for help.").format(__programName__)
         print(s)
-        sys.exit()
 
 
 def process_questions():
@@ -138,7 +136,7 @@ def process_questions():
         sys.exit()
 
 
-def get_filelist_from_dirs(directory):
+def get_fileslist_from_dirs(directory):
     """Get a list of all files in directory.
 
     Arguments:
@@ -146,7 +144,7 @@ def get_filelist_from_dirs(directory):
     """
     list_of_files = []
     for root, dirs, files in os.walk(directory):
-        # print path to all filenames.
+        # print path to all files names.
         for file in files:
             fileName, fileExtension = os.path.splitext(file)
             if fileExtension in video_extensions:
@@ -163,7 +161,7 @@ def print_all_files(my_list, show_line_numbers=True):
 
     Keywords:
     my_list -- List of items
-    show_line_numbers -- (Default: True) adding at the start of line
+    show_line_numbers -- (Defaul1t: True) adding at the start of line
                          a current index number.
     """
     for index, file in enumerate(my_list):
@@ -174,7 +172,7 @@ def print_all_files(my_list, show_line_numbers=True):
 
 
 def get_random_movie(my_list):
-    """Retrun single random element from a list.
+    """Return single random element from a list (of directories).
 
     Keywords:
     my_list -- List of items
@@ -182,15 +180,15 @@ def get_random_movie(my_list):
     try:
         if not my_list:
             raise Exception("List is empty")
-        list_of_files = get_filelist_from_dirs(my_list)
-        movie = get_random_item(list_of_files).split('/')
-        return movie[-1]
+        list_of_files = get_fileslist_from_dirs(my_list)
+        movie = get_random_item(list_of_files)
+        return movie
     except Exception as err:
         print(err)
 
 
 def get_list_of_video_extensions():
-    ins = open("video_extensions.txt", "r")
+    ins = open("../select-movie/video_extensions.txt", "r")
     ext_list = []
     for line in ins:
         ext = line.split(" ")
@@ -202,4 +200,4 @@ def get_list_of_video_extensions():
 # Run the program
 start_time = time.time()
 main()
-print("Total time exec:",time.time() - start_time, "seconds")
+print("Total time exec:", time.time() - start_time, "seconds")
