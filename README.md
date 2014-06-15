@@ -1,5 +1,5 @@
 # Select a move for me
-> This little program is going to help to choose a move for you.
+> This little program will help you choose the movie for you. It will select a single movie from source directory and also from its sub-directories.
 
 
 ## Installation
